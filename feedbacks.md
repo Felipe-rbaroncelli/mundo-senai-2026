@@ -2,8 +2,8 @@
 
 ## O que disseram
 
-[Registrar um comentário real de quem viu a apresentação, com um ponto positivo ou algo a melhorar.]
+Muitos visitantes gostaram da inovação da maquete.
 
 ## O que eu mudaria
 
-[Explicar o que você mudaria em uma próxima apresentação.]
+Em uma próxima apresentação, eu daria mais espaço para o público interagir com a maquete, por exemplo, convidando os visitantes a testar seus controles.
