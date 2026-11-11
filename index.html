@@ -4,53 +4,108 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mundo SENAI 2026 | Felipe Rezende Baroncelli</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=Press+Start+2P&display=swap" rel="stylesheet">
 <style>
+:root {
+  --bg: #1C1C1C;
+  --text: #EDEDED;
+  --primary: #F5B700;   /* amarelo industrial — botões e destaques */
+  --secondary: #5A5A5A; /* cinza — textos secundários, bordas */
+  --accent: #FF5A1F;    /* laranja — detalhes e hover */
+
+  --card-bg: rgba(255, 255, 255, 0.045);
+  --card-border: rgba(255, 255, 255, 0.16);
+  --nav-bg: rgba(28, 28, 28, 0.75);
+  --shadow: rgba(0, 0, 0, 0.35);
+
+  --font-head: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', 'Cascadia Code', Consolas, monospace;
+
+  --radius-pill: 999px;
+  --radius-card: 18px;
+
+  --dur: 0.5s;
+}
+
+/* Tema claro — variante clara da mesma "oficina", ativada com [data-theme="light"] */
+:root[data-theme="light"] {
+  --bg: #EFEDE7;
+  --text: #1C1C1C;
+  --primary: #C98F00;   /* mesmo amarelo, ajustado pro contraste em fundo claro */
+  --secondary: #7A7A7A;
+  --accent: #E14E17;
+
+  --card-bg: rgba(28, 28, 28, 0.04);
+  --card-border: rgba(28, 28, 28, 0.12);
+  --nav-bg: rgba(239, 237, 231, 0.8);
+  --shadow: rgba(0, 0, 0, 0.12);
+}
+
+
 * { box-sizing: border-box; }
-body { margin: 0; background: #eef3f9; color: #182842; font: 1rem/1.65 system-ui, sans-serif; }
-header { padding: 2.5rem 1.25rem; background: #12284f; color: white; border-bottom: 5px solid #e88924; }
-.wrap { max-width: 900px; margin: auto; }
-main { padding: 1.5rem 1.25rem 3rem; }
-header a { color: #d6e9ff; }
-h1 { margin: .6rem 0 0; line-height: 1.14; font-size: clamp(2rem, 6vw, 3.5rem); }
-header p { margin: .5rem 0 0; }
-h2 { margin: 1.4rem 0 .3rem; line-height: 1.2; }
-p { margin: .4rem 0 1rem; }
-a { color: #074f94; }
-ul { padding-left: 1.5rem; }
-figure { margin: 1rem 0; }
-figure img { display: block; max-width: 100%; height: auto; border-radius: 12px; }
-figcaption { margin-top: .5rem; }
-.back { display:inline-flex; padding:.45rem .85rem; border:1px solid #9ab1d1; border-radius:999px; color:white; text-decoration:none; font-weight:650; }
-.back:hover { background:#264a79; }
-.details { display:grid; gap:1rem; margin:0; padding:0; list-style:none; }
-.detail { background:#fff; border:1px solid #d6e1ef; border-radius:16px; padding:1.2rem 1.4rem; }
-.detail h2 { margin:0 0 .5rem; color:#12284f; }
-.detail p { margin:0; }
-.feedback-grid { grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr)); }
-.feedback-grid .detail { border-top:4px solid #3467a5; }
-.feedback-grid .detail:nth-child(2) { border-top-color:#d47b19; }
-.step { display:grid; grid-template-columns:auto 1fr; gap:1rem; }
-.step-num { display:grid; place-items:center; width:2.35rem; height:2.35rem; border-radius:50%; background:#e4eefb; color:#12284f; font-weight:750; }
-.contribution { margin-top:1rem; border-left:4px solid #e88924; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 1rem/1.65 var(--font-body); }
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.wrap { width: min(100% - 2.5rem, 1000px); margin-inline: auto; position: relative; }
+header { padding: clamp(2rem, 7vw, 4.5rem) 0 2.2rem; border-bottom: 1px solid var(--card-border); }
+header::after { display:block; content:""; height:4px; width:min(100% - 2.5rem, 1000px); margin:1.6rem auto 0; background:linear-gradient(90deg,var(--primary),var(--accent)); border-radius:999px; }
+.top { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:.75rem; }
+h1, h2 { font-family: var(--font-head); line-height: 1.12; }
+h1 { margin: 1.2rem 0 .4rem; font-size: clamp(2.3rem, 7vw, 5rem); letter-spacing: -.04em; }
+h2 { margin: 0 0 .65rem; font-size: clamp(1.25rem, 3vw, 1.6rem); }
+header p, .panel p { margin: 0; }
+main { padding-block: 1.8rem 3.5rem; }
+.panels { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem; }
+.panel { padding:clamp(1rem, 3vw, 1.6rem); border:1px solid var(--card-border); border-radius:var(--radius-card); background:var(--card-bg); }
+.panels .panel:first-child, .wide { grid-column:1/-1; }
+.panel h2::before { content:""; display:inline-block; width:.24rem; height:.85em; border-radius:4px; margin-right:.55rem; background:var(--accent); }
+.back, #theme-toggle, .files a { display:inline-flex; padding:.52rem .9rem; border:1px solid var(--card-border); border-radius:var(--radius-pill); color:var(--text); background:var(--card-bg); text-decoration:none; font:600 .9rem/1.4 var(--font-body); }
+#theme-toggle { cursor:pointer; }
+.back:hover, #theme-toggle:hover, .files a:hover { border-color:var(--primary); }
+figure { margin:0; }
+figure img { display:block; max-width:100%; max-height:460px; width:auto; height:auto; border-radius:12px; }
+figcaption { margin-top:.65rem; }
+.files { list-style:none; padding:0; margin:0; display:flex; flex-wrap:wrap; gap:.55rem; }
+.files li:first-child a { background:#F5B700; color:#1C1C1C; }
+@media(max-width:640px){.panels{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
 <header><div class="wrap">
-<a class="back" href="https://felipe-rbaroncelli.github.io/portfolio/#mundo-senai">← Voltar ao portfólio</a>
+<div class="top"><a class="back" href="https://felipe-rbaroncelli.github.io/portfolio/#mundo-senai">← Voltar ao portfólio</a><button type="button" id="theme-toggle" aria-pressed="false">Tema claro</button></div>
 <h1>Mundo SENAI 2026</h1>
 <p>Casa inteligente com ESP32 · Felipe Rezende Baroncelli</p>
 </div></header>
-<main class="wrap">
-<h2>O que apresentamos</h2><p>No Mundo SENAI 2026, nossa equipe apresentou uma maquete de casa inteligente para demonstrar sistemas embarcados e Internet das Coisas (IoT). O ESP32 lê os sensores, aplica as regras do programa e aciona dispositivos como luzes, ventilação e o motor do varal. O projeto também tem um painel web para acompanhar e controlar a maquete pela rede Wi-Fi.</p><h2>Para quem apresentamos</h2><p>Apresentamos para alunos do 9º ano de escolas públicas, familiares e instrutores.</p><h2>Minha participação</h2><p>Apresentei a maquete e expliquei o LED da casa, o varal automático e o sistema de ventilação.</p><h2>O que aprendi</h2><p>Aprendi sobre sistemas embarcados e Internet das Coisas (IoT) e a trabalhar em equipe.</p>
-<h2>Feedbacks</h2><p>Muitos visitantes gostaram da inovação da maquete.</p>
-<h2>O que eu mudaria</h2><p>Em uma próxima apresentação, eu daria mais espaço para o público interagir com a maquete, por exemplo, convidando os visitantes a testar seus controles.</p>
-<h2>Equipe e maquete</h2>
+<main class="wrap"><div class="panels">
+<section class="panel"><h2>O que apresentamos</h2><p>No Mundo SENAI 2026, nossa equipe apresentou uma maquete de casa inteligente para demonstrar sistemas embarcados e Internet das Coisas (IoT). O ESP32 lê os sensores, aplica as regras do programa e aciona dispositivos como luzes, ventilação e o motor do varal. O projeto também tem um painel web para acompanhar e controlar a maquete pela rede Wi-Fi.</p></section><section class="panel"><h2>Para quem apresentamos</h2><p>Apresentamos para alunos do 9º ano de escolas públicas, familiares e instrutores.</p></section><section class="panel"><h2>Minha participação</h2><p>Apresentei a maquete e expliquei o LED da casa, o varal automático e o sistema de ventilação.</p></section><section class="panel"><h2>O que aprendi</h2><p>Aprendi sobre sistemas embarcados e Internet das Coisas (IoT) e a trabalhar em equipe.</p></section>
+<section class="panel"><h2>Feedbacks</h2><p>Muitos visitantes gostaram da inovação da maquete.</p></section>
+<section class="panel"><h2>O que eu mudaria</h2><p>Em uma próxima apresentação, eu daria mais espaço para o público interagir com a maquete, por exemplo, convidando os visitantes a testar seus controles.</p></section>
+<section class="panel wide"><h2>Equipe e maquete</h2>
 <figure>
 <img src="fotos/equipe-maquete.jpg" alt="Equipe atrás da bancada com a maquete da casa inteligente">
 <figcaption>Equipe reunida atrás da bancada com as maquetes da casa inteligente e da garagem, no Mundo SENAI 2026.</figcaption>
-</figure>
-<h2>Arquivos da atividade</h2>
-<ul><li><a href="apresentacao.pdf">Apresentação em PDF</a></li><li><a href="apresentacao-interativa.html">Apresentação interativa original</a></li><li><a href="fotos.md">Registros e legendas</a></li><li><a href="feedbacks.html">Feedbacks</a></li><li><a href="processo.html">Processo do projeto</a></li></ul>
+</figure></section>
+<section class="panel wide"><h2>Arquivos da atividade</h2>
+<ul class="files"><li><a href="apresentacao.pdf">Apresentação em PDF</a></li><li><a href="apresentacao-interativa.html">Apresentação interativa original</a></li><li><a href="fotos.md">Registros e legendas</a></li><li><a href="feedbacks.html">Feedbacks</a></li><li><a href="processo.html">Processo do projeto</a></li></ul></section></div>
 </main>
+<script>
+const toggle = document.getElementById('theme-toggle');
+toggle.addEventListener('click', function () {
+  const light = document.documentElement.dataset.theme !== 'light';
+  document.documentElement.dataset.theme = light ? 'light' : 'dark';
+  toggle.textContent = light ? 'Tema escuro' : 'Tema claro';
+  toggle.setAttribute('aria-pressed', String(light));
+});
+</script>
 </body>
 </html>
