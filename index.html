@@ -20,10 +20,23 @@ ul { padding-left: 1.5rem; }
 figure { margin: 1rem 0; }
 figure img { display: block; max-width: 100%; height: auto; border-radius: 12px; }
 figcaption { margin-top: .5rem; }
+.back { display:inline-flex; padding:.45rem .85rem; border:1px solid #9ab1d1; border-radius:999px; color:white; text-decoration:none; font-weight:650; }
+.back:hover { background:#264a79; }
+.details { display:grid; gap:1rem; margin:0; padding:0; list-style:none; }
+.detail { background:#fff; border:1px solid #d6e1ef; border-radius:16px; padding:1.2rem 1.4rem; }
+.detail h2 { margin:0 0 .5rem; color:#12284f; }
+.detail p { margin:0; }
+.feedback-grid { grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr)); }
+.feedback-grid .detail { border-top:4px solid #3467a5; }
+.feedback-grid .detail:nth-child(2) { border-top-color:#d47b19; }
+.step { display:grid; grid-template-columns:auto 1fr; gap:1rem; }
+.step-num { display:grid; place-items:center; width:2.35rem; height:2.35rem; border-radius:50%; background:#e4eefb; color:#12284f; font-weight:750; }
+.contribution { margin-top:1rem; border-left:4px solid #e88924; }
 </style>
 </head>
 <body>
 <header><div class="wrap">
+<a class="back" href="https://felipe-rbaroncelli.github.io/portfolio/#mundo-senai">← Voltar ao portfólio</a>
 <h1>Mundo SENAI 2026</h1>
 <p>Casa inteligente com ESP32 · Felipe Rezende Baroncelli</p>
 </div></header>
@@ -37,7 +50,7 @@ figcaption { margin-top: .5rem; }
 <figcaption>Equipe reunida atrás da bancada com as maquetes da casa inteligente e da garagem, no Mundo SENAI 2026.</figcaption>
 </figure>
 <h2>Arquivos da atividade</h2>
-<ul><li><a href="apresentacao.pdf">Apresentação em PDF</a></li><li><a href="apresentacao-interativa.html">Apresentação interativa original</a></li><li><a href="fotos.md">Registros e legendas</a></li><li><a href="feedbacks.md">Feedbacks</a></li><li><a href="PROCESSO.md">Processo do projeto</a></li></ul>
+<ul><li><a href="apresentacao.pdf">Apresentação em PDF</a></li><li><a href="apresentacao-interativa.html">Apresentação interativa original</a></li><li><a href="fotos.md">Registros e legendas</a></li><li><a href="feedbacks.html">Feedbacks</a></li><li><a href="processo.html">Processo do projeto</a></li></ul>
 </main>
 </body>
 </html>
