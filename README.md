@@ -16,7 +16,7 @@ Apresentei a maquete e expliquei o LED da casa, o varal automático e o sistema 
 
 ## O que aprendi
 
-[Completar com o que você aprendeu durante o projeto ou ao apresentar.]
+Aprendi sobre sistemas embarcados e Internet das Coisas (IoT) e a trabalhar em equipe.
 
 ## Arquivos
 
