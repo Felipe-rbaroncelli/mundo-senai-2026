@@ -8,7 +8,7 @@ No Mundo SENAI 2026, nossa equipe apresentou uma maquete de casa inteligente par
 
 ## Para quem apresentamos
 
-[Completar com quem viu a apresentação.]
+Apresentamos para alunos do 9º ano de escolas públicas, familiares e instrutores.
 
 ## Minha participação
 
